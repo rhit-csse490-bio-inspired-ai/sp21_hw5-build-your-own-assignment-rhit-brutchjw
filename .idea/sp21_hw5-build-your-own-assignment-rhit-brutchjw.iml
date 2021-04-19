@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/source_code" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source_code/utils" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Test" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Test/01_shape_apple_banana" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Test/02_color_apple_orange" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Test/03_simple_color_shape" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Test/04_intermediate_color_shape" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Test/05_full_color_shape" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Train" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Train/01_shape_apple_banana" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Train/02_color_apple_orange" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Train/03_simple_color_shape" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Train/04_intermediate_color_shape" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/Train/05_full_color_shape" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source_code/01_shape_evolution" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source_code/02_color_evolution" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source_code/03_simple_evolution" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source_code/04_intermediate_evolution" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source_code/05_full_evolution" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
