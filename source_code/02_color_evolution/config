@@ -1,4 +1,4 @@
-#--- parameters for the shape experiment ---#
+#--- parameters for the color experiment ---#
 
 [NEAT]
 fitness_criterion     = max

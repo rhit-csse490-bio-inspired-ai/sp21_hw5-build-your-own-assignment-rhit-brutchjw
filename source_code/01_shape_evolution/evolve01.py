@@ -2,6 +2,7 @@ import os
 import cv2
 import numpy as np
 import neat
+import random
 from labeler import Labeler
 import possible_answers01 as pa
 os.chdir('../..')
@@ -12,9 +13,10 @@ training_images = []
 
 def load_image(file):
     image = cv2.imread(file)
-    image = cv2.resize(image, (100, 100))
-    data = np.ndarray(shape=(1, 100, 100, 3), dtype=int)
-    image_array = np.asarray(image)
+    image = cv2.resize(image, (16, 16))
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    data = np.ndarray(shape=(1, 16, 16), dtype=int)
+    image_array = np.asarray(gray)
     data[0] = image_array
     return data[0]
 
@@ -64,12 +66,12 @@ def run(config_file):
         temp_input = train.image_array.flatten()
         output = winner_net.activate(temp_input)
         print("input {!r}, expected output {!r}, got {!r}".format(train.image_name, train.answer,
-                                                                  pa.answers.__getitem__(output)))
+                                                                  pa.answers.__getitem__(round(output[0]))))
 
 
 # if __name__ == '__main__':
 load_and_label_training()
-# load_and_label_testing()
+random.shuffle(training_images)
 local_dir = os.path.dirname(__file__)
 config_path = os.path.join(local_dir, 'config')
 run(config_path)
