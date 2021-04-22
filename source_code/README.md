@@ -11,5 +11,3 @@ To improve the runtime of the project, images were converted to 16 by 16 pixels,
 * `evolve04` Expands the dataset further to include different types of the same fruits. For example testing recognition of Granny Smith apples versus Braeburn apples. 
 
 * `evolve05` Image recognition using the full dataset of fruits and vegetables.
-# How to use
-Open the folders with the label "0x_xxx_evolution" and open the evolve0x.py file and run it. Plots will appear in the viz folder, and output data will appear in the output_files folder.
