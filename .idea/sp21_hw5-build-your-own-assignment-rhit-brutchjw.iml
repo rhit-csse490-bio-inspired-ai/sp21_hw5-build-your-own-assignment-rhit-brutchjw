@@ -23,6 +23,8 @@
       <sourceFolder url="file://$MODULE_DIR$/source_code/03_simple_evolution" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source_code/04_intermediate_evolution" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source_code/05_full_evolution" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/viz" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/output_files" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

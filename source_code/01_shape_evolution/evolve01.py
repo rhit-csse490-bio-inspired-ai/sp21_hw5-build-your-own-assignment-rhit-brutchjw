@@ -3,13 +3,17 @@ import cv2
 import numpy as np
 import neat
 import random
+import visualize
 from labeler import Labeler
 import possible_answers01 as pa
 os.chdir('../..')
 base_dir = os.getcwd()
+viz_dir = os.path.join(base_dir, 'viz\\01_visualizations')
+visualize.set_viz_dir(viz_dir)
 train_dir = os.path.join(base_dir, 'data\\Train\\01_shape_apple_banana')
 training_images = []
-
+average_accuracy = []
+m = len(pa.answers) - 1
 
 def load_image(file):
     image = cv2.imread(file)
@@ -34,14 +38,19 @@ def load_and_label_training():
 
 
 def eval_genomes(genomes, config):
+    avg_accuracy = 0
     for genome_id, genome in genomes:
         genome.fitness = len(training_images)
         net = neat.nn.FeedForwardNetwork.create(genome, config)
+        accuracy = 0
         for train in training_images:
             temp_input = train.image_array.flatten()
             output = net.activate(temp_input)
-            genome.fitness -= (output[0] - pa.answers.index(train.answer)) ** 2
-
+            genome.fitness -= (output[0] - (pa.answers.index(train.answer) / m)) ** 2
+            if train.answer == pa.answers.__getitem__(round(output[0] * m)):
+                accuracy += 1
+        avg_accuracy += (accuracy / len(training_images))
+    average_accuracy.append(avg_accuracy / len(genomes))
 
 def run(config_file):
     # Load config file
@@ -54,7 +63,8 @@ def run(config_file):
     pop.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     pop.add_reporter(stats)
-    pop.add_reporter(neat.Checkpointer(5))
+    # // Uncomment below to add checkpoints
+    # pop.add_reporter(neat.Checkpointer(5))
     # Run for 50 generations
     winner = pop.run(eval_genomes, 50)
     # Display winner
@@ -62,14 +72,24 @@ def run(config_file):
     # Show output of the most fit genome against training data.
     print('\nOutput:')
     winner_net = neat.nn.FeedForwardNetwork.create(winner, config)
+    accuracy = 0
+    total = 0
     for train in training_images:
         temp_input = train.image_array.flatten()
         output = winner_net.activate(temp_input)
         print("input {!r}, expected output {!r}, got {!r}".format(train.image_name, train.answer,
-                                                                  pa.answers.__getitem__(round(output[0]))))
+                                                                  pa.answers.__getitem__(round(output[0] * m))))
+        total += 1
+        if train.answer == pa.answers.__getitem__(round(output[0] * m)):
+            accuracy += 1
+    print("Best accuracy percentage: ", (accuracy / total * 100))
+    # visualize things
+    visualize.plot_accuracy(average_accuracy, view=True)
+    visualize.draw_net(config, winner, True)
+    visualize.plot_stats(stats, ylog=False, view=True)
+    # visualize.plot_species(stats, view=True)
 
 
-# if __name__ == '__main__':
 load_and_label_training()
 random.shuffle(training_images)
 local_dir = os.path.dirname(__file__)
