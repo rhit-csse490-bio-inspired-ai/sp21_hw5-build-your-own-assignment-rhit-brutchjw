@@ -69,7 +69,7 @@ def run(config_file):
     # // Uncomment below to add checkpoints
     # pop.add_reporter(neat.Checkpointer(5))
     # Run for 50 generations
-    winner = pop.run(eval_genomes, 3)
+    winner = pop.run(eval_genomes, 50)
     # Display winner
     print('\nBest genome:\n{!s}'.format(winner))
     # Show output of the most fit genome against training data.
